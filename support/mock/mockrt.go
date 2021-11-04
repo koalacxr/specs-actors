@@ -690,6 +690,10 @@ func (rt *Runtime) VerifyAggregateSeals(agg proof.AggregateSealVerifyProofAndInf
 	return nil
 }
 
+func (rt *Runtime) VerifyReplicaUpdate(replicaInfo proof.ReplicaUpdateInfo) error {
+	return nil
+}
+
 func (rt *Runtime) VerifyPoSt(vi proof.WindowPoStVerifyInfo) error {
 	exp := rt.expectVerifyPoSt
 	if exp != nil {
