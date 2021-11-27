@@ -298,7 +298,7 @@ func NextMinerDLInfo(t *testing.T, v *VM, minerIDAddr address.Address) *dline.In
 }
 
 // AdvanceByDeadline creates a new VM advanced to an epoch specified by the predicate while keeping the
-// miner state upu-to-date by running a cron at the end of each deadline period.
+// miner state up-to-date by running a cron at the end of each deadline period.
 func AdvanceByDeadline(t *testing.T, v *VM, minerIDAddr address.Address, predicate advanceDeadlinePredicate) (*VM, *dline.Info) {
 	dlInfo := MinerDLInfo(t, v, minerIDAddr)
 	var err error
@@ -524,6 +524,7 @@ func ApplyOk(t *testing.T, v *VM, from, to address.Address, value abi.TokenAmoun
 
 func ApplyCode(t *testing.T, v *VM, from, to address.Address, value abi.TokenAmount, method abi.MethodNum, params interface{}, code exitcode.ExitCode) cbor.Marshaler {
 	result := RequireApplyMessage(t, v, from, to, value, method, params, t.Name())
+	fmt.Println(v.logs)
 	require.Equal(t, code, result.Code, "unexpected exit code")
 	return result.Ret
 }
